@@ -1,0 +1,12 @@
+{
+  "MAIN": {
+    "TITLE": "Eis zu wie vill?"
+  },
+  "GAME" : {
+    "CHALLENGE_TITLE": "Eis zu wie vill...",
+    "CHALLENGE_PLACEHOLDER": "zahlsch en Rundi?",
+    "CHALLENGER":  "Useforderer",
+    "CHALLENGER_PLACEHOLDER": "Min Name",
+    "CHALLENGE_BUTTON": "Forder öbber use!"
+  }
+}

@@ -1,9 +1,9 @@
 <form class="challengeForm">
   <div>
-    <label for="challenge">What are the odds ...</label>
-    <input required placeholder="you buy me a beer" id="challenge"/>
-    <label for="challenge">Challenger:</label>
-    <input required placeholder="My name" id="name"/>
+    <label for="challenge">{{ "GAME.CHALLENGE_TITLE" | translate }}</label>
+    <input required [placeholder]="'GAME.CHALLENGE_PLACEHOLDER' | translate" id="challenge"/>
+    <label for="name">{{"GAME.CHALLENGER" | translate}}</label>
+    <input required [placeholder]="'GAME.CHALLENGER_PLACEHOLDER' | translate" id="name"/>
   </div>
-  <input type="submit" value="Challenge a friend!"/>
+  <button type="submit" >{{'GAME.CHALLENGE_BUTTON' | translate}}</button>
 </form>

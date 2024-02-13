@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './create-challenge.component.css'
 })
 export class CreateChallengeComponent {
-
+  constructor() {
+  }
 }

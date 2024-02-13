@@ -1,0 +1,12 @@
+{
+  "MAIN": {
+    "TITLE": "What are the odds?"
+  },
+  "GAME" : {
+    "CHALLENGE_TITLE": "What are the odds...",
+    "CHALLENGE_PLACEHOLDER": "you buy me a beer?",
+    "CHALLENGER":  "Challenger",
+    "CHALLENGER_PLACEHOLDER": "My name",
+    "CHALLENGE_BUTTON": "Challenge a friend!"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "MAIN": {
+    "TITLE": "Was sind die Chancen?"
+  },
+  "GAME" : {
+    "CHALLENGE_TITLE": "Was sind die Chancen, ...",
+    "CHALLENGE_PLACEHOLDER": "dass du mir ein Bier zahlst?",
+    "CHALLENGER":  "Herausforderer",
+    "CHALLENGER_PLACEHOLDER": "Mein Name",
+    "CHALLENGE_BUTTON": "Jemanden herausfordern!"
+  }
+}
