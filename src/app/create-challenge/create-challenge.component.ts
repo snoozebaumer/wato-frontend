@@ -10,6 +10,8 @@ export class CreateChallengeComponent {
   }
 
   create(challenge: string, challenger: string) {
-    this.challengeService.createChallenge(challenge, challenger);
+    this.challengeService.createChallenge(challenge, challenger).subscribe((response) => {
+      console.log(response);
+    });
   }
 }
