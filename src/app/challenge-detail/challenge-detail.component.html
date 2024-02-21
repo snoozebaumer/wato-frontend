@@ -1,0 +1,11 @@
+<h2>{{"GAME.CHALLENGE_TITLE" | translate }} {{challenge.challenge}}</h2>
+<p>{{$any(challenge.challengeStatus) | translate: {"value": challenge.challengerName} }}</p>
+<form *ngIf="challenge.challengeStatus === ChallengeStatus.NEW" class="challengeForm">
+  <div>
+    <label for="range">{{ "GAME.RANGE" | translate }}</label>
+    <input type="number" [(ngModel)]="challenge.maxRange" required [placeholder]="'GAME.RANGE_PLACEHOLDER' | translate" name="range" id="range"/>
+  </div>
+  <button type="submit" (click)="changeStateToGuessInput()" >{{'GAME.CONTINUE_BUTTON' | translate}}</button>
+</form>
+<div *ngIf="formError" class="error">{{"GAME.ERROR_REQUIRED_INPUTS" | translate}}</div>
+

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {CreateChallengeComponent} from "./create-challenge/create-challenge.component";
+import {ChallengeCreationComponent} from "./challenge-creation/challenge-creation.component";
 import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({name: 'translate'})
@@ -29,7 +29,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        CreateChallengeComponent,
+        ChallengeCreationComponent,
         TranslatePipeMock
       ],
     }).compileComponents();

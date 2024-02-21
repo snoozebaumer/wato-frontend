@@ -3,10 +3,23 @@
     "TITLE": "Eis zu wie vill?"
   },
   "GAME" : {
-    "CHALLENGE_TITLE": "Eis zu wie vill...",
+    "CHALLENGE_TITLE": "Eis zu wie vill ",
     "CHALLENGE_PLACEHOLDER": "zahlsch en Rundi?",
-    "CHALLENGER":  "Useforderer",
+    "CHALLENGER":  "Useforderndi Person",
     "CHALLENGER_PLACEHOLDER": "Min Name",
-    "CHALLENGE_BUTTON": "Forder öbber use!"
+    "CHALLENGE_BUTTON": "Forder öbber use!",
+    "NEW_TITLE": "Du bisch vo {{value}} usegforderet worde!",
+    "GUESS_TO_BE_SET_TITLE": "Gib dini Glückszahl ih!",
+    "CHALLENGER_TO_MOVE_TITLE": "Die ander Person het en gueti Zahl iigeh. Gib dini Glückszahl ih!",
+    "FINISHED_SUCCESSFULLY_TITLE": "It's happening!",
+    "FINISHED_NOTHING_HAPPENS_TITLE": "Schad, jetzt passiert nüt.",
+    "RANGE": "Zahlebereich - 1 zu",
+    "RANGE_PLACEHOLDER": "10",
+    "CONTINUE_BUTTON": "Wiiter zum nöchschte Schritt",
+    "ERROR_REQUIRED_INPUTS": "Bitte alli Felder richtig usfülle."
+  },
+  "SHARE": {
+    "DESCRIPTION": "Jetzt isch din*i Kolleg*in dra. Teil de Link!",
+    "BUTTON": "Link kopiere"
   }
 }

@@ -7,6 +7,16 @@
     "CHALLENGE_PLACEHOLDER": "you buy me a beer?",
     "CHALLENGER":  "Challenger",
     "CHALLENGER_PLACEHOLDER": "My name",
-    "CHALLENGE_BUTTON": "Challenge a friend!"
+    "CHALLENGE_BUTTON": "Challenge a friend!",
+    "NEW_TITLE": "You've been challenged by {{value}}!",
+    "GUESS_TO_BE_SET_TITLE": "Enter your lucky number!",
+    "CHALLENGER_TO_MOVE_TITLE": "Enter your lucky number!",
+    "FINISHED_SUCCESSFULLY_TITLE": "It's happening!",
+    "FINISHED_NOTHING_HAPPENS_TITLE": "Oh no! Nothing happens.",
+    "ERROR_REQUIRED_INPUTS": "Please fill in all fields."
+  },
+  "SHARE": {
+    "DESCRIPTION": "Now it's your friends turn. Share the URL below to continue the game!",
+    "BUTTON": "Copy URL"
   }
 }

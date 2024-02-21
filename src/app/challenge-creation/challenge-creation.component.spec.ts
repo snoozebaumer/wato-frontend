@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateChallengeComponent } from './create-challenge.component';
+import { ChallengeCreationComponent } from './challenge-creation.component';
 import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({name: 'translate'})
@@ -23,50 +23,50 @@ class TranslatePipeMock implements PipeTransform {
 }
 
 describe('CreateChallengeComponent', () => {
-  let component: CreateChallengeComponent;
-  let fixture: ComponentFixture<CreateChallengeComponent>;
+  let component: ChallengeCreationComponent;
+  let fixture: ComponentFixture<ChallengeCreationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreateChallengeComponent, TranslatePipeMock]
+      declarations: [ChallengeCreationComponent, TranslatePipeMock]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateChallengeComponent);
+    fixture = TestBed.createComponent(ChallengeCreationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should display translated challenge title label', () => {
-    const fixture = TestBed.createComponent(CreateChallengeComponent);
+    const fixture = TestBed.createComponent(ChallengeCreationComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('label')?.textContent).toEqual('Challenge Title');
   });
 
   it('should display translated challenge placeholder text', () => {
-    const fixture = TestBed.createComponent(CreateChallengeComponent);
+    const fixture = TestBed.createComponent(ChallengeCreationComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('#challenge')?.getAttribute('placeholder')).toEqual('Challenge Placeholder');
   });
 
   it('should display translated challenger label', () => {
-    const fixture = TestBed.createComponent(CreateChallengeComponent);
+    const fixture = TestBed.createComponent(ChallengeCreationComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelectorAll('label')[1]?.textContent).toEqual('Challenger');
   });
 
   it('should display translated challenger placeholder text', () => {
-    const fixture = TestBed.createComponent(CreateChallengeComponent);
+    const fixture = TestBed.createComponent(ChallengeCreationComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('#name')?.getAttribute('placeholder')).toEqual('Challenger Placeholder');
   });
 
   it('should display translated challenge button text', () => {
-    const fixture = TestBed.createComponent(CreateChallengeComponent);
+    const fixture = TestBed.createComponent(ChallengeCreationComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('button')?.textContent).toEqual('Challenge Button');
