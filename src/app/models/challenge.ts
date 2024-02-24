@@ -3,7 +3,8 @@ export class Challenge {
   challenge: string;
   challengerId: string;
   challengerName: string;
-  challengeeId?: string = undefined;
+  challengeeId?: string;
+  challengeeName?: string;
   challengeStatus: ChallengeStatus = ChallengeStatus.NEW;
   maxRange?: number = undefined;
   challengerNumber?: number = undefined;

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Challenge, ChallengeStatus} from "../models/challenge";
-import {ChallengeService} from "../challenge.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {Challenge, ChallengeStatus} from '../models/challenge';
+import {ChallengeService} from '../challenge.service';
 
 @Component({
   selector: 'app-challenge-detail',
@@ -9,12 +9,13 @@ import {ChallengeService} from "../challenge.service";
   styleUrl: './challenge-detail.component.css'
 })
 export class ChallengeDetailComponent {
-  challenge: Challenge = new Challenge("", "","", "");
+  challenge: Challenge = new Challenge('', '', '', '');
   formError?: string;
 
   constructor(
     public route: ActivatedRoute,
-    private challengeService: ChallengeService) {
+    private challengeService: ChallengeService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -33,27 +34,37 @@ export class ChallengeDetailComponent {
 
   protected readonly window = window;
 
-  changeStateToGuessInput() {
-    if (!this.challenge?.maxRange || this.challenge.maxRange < 0) {
-      this.formError = "GAME.ERROR_REQUIRED_INPUTS";
+  setRange() {
+    if (!this.challenge?.maxRange || this.challenge.maxRange < 0 || !this.challenge.challengeeName) {
+      this.formError = 'GAME.ERROR_REQUIRED_INPUTS';
       return;
     }
-    this.goToNextState();
+    this.challengeService.setRange(this.challenge.id, this.challenge.maxRange, this.challenge.challengeeName).subscribe((response) => {
+      this.formError = undefined;
+      this.challenge.challengeStatus = response.challengeStatus;
+    });
   }
 
-  goToNextState() {
-    this.formError = undefined;
+  setChallengeeGuess() {
+    this.setGuess(this.challenge.challengeeNumber)?.subscribe(async (response) => {
+      this.formError = undefined;
+      await this.router.navigate(['/share', this.challenge.id]);
+    });
+  }
 
-    switch (this.challenge.challengeStatus) {
-      case ChallengeStatus.NEW:
-        this.challenge!.challengeStatus = ChallengeStatus.GUESS_TO_BE_SET;
-        break;
-      case ChallengeStatus.GUESS_TO_BE_SET:
-        // TODO: send guess to server and switch back to share
-        break;
-      case ChallengeStatus.CHALLENGER_TO_MOVE:
-        // TODO: send guess to server and receive result.
-        break;
+  setChallengerGuess() {
+    this.setGuess(this.challenge.challengerNumber)?.subscribe(async (response) => {
+      this.formError = undefined;
+      this.challenge = response;
+    });
+  }
+
+  setGuess(chosenNumber?: number) {
+    if (!chosenNumber || chosenNumber > this.challenge.maxRange!
+      || chosenNumber < 1) {
+      this.formError = "GAME.ERROR_RESPECT_RANGE";
+      return;
     }
+    return this.challengeService.setGuess(this.challenge.id, chosenNumber);
   }
 }

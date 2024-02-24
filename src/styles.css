@@ -11,7 +11,8 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 80vh
+  height: 80vh;
+  margin: 0 20vw 0 20vw;
 }
 
 .challenge-container {

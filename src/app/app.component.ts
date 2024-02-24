@@ -7,7 +7,6 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'What are the Odds?';
 
   constructor(translate: TranslateService) {
     translate.setDefaultLang('en');
