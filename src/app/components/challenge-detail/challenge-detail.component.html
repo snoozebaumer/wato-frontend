@@ -5,7 +5,7 @@
     <label for="range">{{ "GAME.RANGE" | translate }}</label>
     <input type="number" [(ngModel)]="challenge.maxRange" required [placeholder]="'GAME.RANGE_PLACEHOLDER' | translate" name="range" id="range"/>
     <label for="name">{{'GAME.CHALLENGER_PLACEHOLDER' | translate}}</label>
-    <input id="name" name="challengeeName" [(ngModel)]="challenge.challengeeName" required placeholder="Hans" />
+    <input id="name" name="challengeeName" [disabled]="!!userService.user" [(ngModel)]="challenge.challengeeName" required placeholder="Hans" />
   </div>
   <button type="submit" >{{'GAME.CONTINUE_BUTTON' | translate}}</button>
 </form>
@@ -25,6 +25,18 @@
   </div>
   <button type="submit" >{{'GAME.CONTINUE_BUTTON' | translate}}</button>
 </form>
+
+<div *ngIf="challenge.challengeStatus === ChallengeStatus.FAILURE || challenge.challengeStatus === ChallengeStatus.SUCCESS">
+  <h3>{{'GAME.ODDS' | translate}}: 1 / {{challenge.maxRange}}</h3>
+  <div style="float: left">
+    <div class="username">{{challenge.challengeeName}} <span class="roleLabel">{{'GAME.CHALLENGEE' | translate | uppercase}}</span></div>
+    <div>{{challenge.challengeeNumber}}</div>
+  </div>
+  <div style="float: right">
+    <div class="username">{{challenge.challengerName}} <span class="roleLabel">{{'GAME.CHALLENGER' | translate | uppercase}}</span></div>
+    <div>{{challenge.challengerNumber}}</div>
+  </div>
+</div>
 
 <div *ngIf="formError" class="error">{{formError | translate}}</div>
 

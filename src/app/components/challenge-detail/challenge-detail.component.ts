@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Challenge, ChallengeStatus} from '../models/challenge';
-import {ChallengeService} from '../challenge.service';
+import {Challenge} from '../../models/challenge';
+import {ChallengeService} from '../../services/challenge.service';
+import {ChallengeStatus} from '../../models/challenge-status';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-challenge-detail',
@@ -15,7 +17,8 @@ export class ChallengeDetailComponent {
   constructor(
     public route: ActivatedRoute,
     private challengeService: ChallengeService,
-    private router: Router) {
+    private router: Router,
+    public userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -26,6 +29,14 @@ export class ChallengeDetailComponent {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.challengeService.getChallenge(id).subscribe((challenge: Challenge) => {
       this.challenge = challenge;
+
+      if (this.checkAccessNotAllowed()) {
+        this.router.navigate(['/share', this.challenge.id]);
+      }
+
+      if (this.challenge.challengeStatus === ChallengeStatus.NEW && this.userService.user) {
+        this.challenge.challengeeName = this.userService.user.name;
+      }
     })
   }
 
@@ -46,7 +57,7 @@ export class ChallengeDetailComponent {
   }
 
   setChallengeeGuess() {
-    this.setGuess(this.challenge.challengeeNumber)?.subscribe(async (response) => {
+    this.setGuess(this.challenge.challengeeNumber, true)?.subscribe(async (response) => {
       this.formError = undefined;
       await this.router.navigate(['/share', this.challenge.id]);
     });
@@ -59,12 +70,37 @@ export class ChallengeDetailComponent {
     });
   }
 
-  setGuess(chosenNumber?: number) {
+  setGuess(chosenNumber?: number, challengee = false) {
     if (!chosenNumber || chosenNumber > this.challenge.maxRange!
       || chosenNumber < 1) {
       this.formError = "GAME.ERROR_RESPECT_RANGE";
       return;
     }
-    return this.challengeService.setGuess(this.challenge.id, chosenNumber);
+    return this.challengeService.setGuess(this.challenge.id,
+      challengee ? chosenNumber: undefined, challengee ? undefined : chosenNumber);
+  }
+
+  checkAccessNotAllowed(): boolean {
+    const user = this.userService.user;
+
+    // if user is not involved in game
+    if (!user || (user.id !== this.challenge.challengeeId && user.id !== this.challenge.challengerId)) {
+      return this.challenge.challengeStatus === ChallengeStatus.GUESS_TO_BE_SET ||
+        this.challenge.challengeStatus === ChallengeStatus.CHALLENGER_TO_MOVE;
+    }
+    const userId = user.id;
+
+    // if user is challengee
+    if (userId === this.challenge.challengeeId) {
+      return this.challenge.challengeStatus === ChallengeStatus.CHALLENGER_TO_MOVE;
+    }
+
+    // if user is challenger
+    if (userId === this.challenge.challengerId) {
+      return this.challenge.challengeStatus === ChallengeStatus.NEW ||
+        this.challenge.challengeStatus === ChallengeStatus.GUESS_TO_BE_SET;
+    }
+
+    return false;
   }
 }

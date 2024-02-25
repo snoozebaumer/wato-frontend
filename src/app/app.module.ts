@@ -1,16 +1,18 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ChallengeCreationComponent} from './challenge-creation/challenge-creation.component';
+import {ChallengeCreationComponent} from './components/challenge-creation/challenge-creation.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {ChallengeDetailComponent} from './challenge-detail/challenge-detail.component';
-import {ShareComponent} from './share/share.component';
+import {ChallengeDetailComponent} from './components/challenge-detail/challenge-detail.component';
+import {ShareComponent} from './components/share/share.component';
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import {UserService} from './services/user.service';
+import {initializeAppFactory} from './app.initializer';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -38,7 +40,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ClipboardModule
   ],
-  providers: [],
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: initializeAppFactory,
+    deps: [UserService],
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
