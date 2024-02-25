@@ -1,13 +1,14 @@
 import {Component} from '@angular/core';
-import {ChallengeService} from "../challenge.service";
+import {ChallengeService} from "../../services/challenge.service";
 import {Router} from "@angular/router";
+import {UserService} from '../../services/user.service';
 @Component({
   selector: 'create-challenge',
   templateUrl: './challenge-creation.component.html',
   styleUrl: './challenge-creation.component.css'
 })
 export class ChallengeCreationComponent {
-  constructor(private router: Router, private challengeService: ChallengeService) {
+  constructor(private router: Router, private challengeService: ChallengeService, public userService: UserService) {
   }
 
   create(challenge: string, challenger: string) {

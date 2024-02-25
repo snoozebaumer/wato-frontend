@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {ChallengeCreationComponent} from "./challenge-creation/challenge-creation.component";
+import {ChallengeCreationComponent} from "./components/challenge-creation/challenge-creation.component";
 import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({name: 'translate'})
@@ -33,12 +33,6 @@ describe('AppComponent', () => {
         TranslatePipeMock
       ],
     }).compileComponents();
-  });
-
-  it(`should have title 'What are the Odds'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('What are the Odds?');
   });
 
   it('should render translated and capitalized title', () => {

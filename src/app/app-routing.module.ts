@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ChallengeCreationComponent} from "./challenge-creation/challenge-creation.component";
-import {ChallengeDetailComponent} from "./challenge-detail/challenge-detail.component";
-import {ShareComponent} from "./share/share.component";
+import {ChallengeCreationComponent} from "./components/challenge-creation/challenge-creation.component";
+import {ChallengeDetailComponent} from "./components/challenge-detail/challenge-detail.component";
+import {ShareComponent} from "./components/share/share.component";
 
 const routes: Routes = [
   { path: 'challenge/:id', component: ChallengeDetailComponent},
