@@ -12,3 +12,11 @@
   font-size: 1vw;
   color: rgb(232, 194, 194);
 }
+
+.challengee-guess {
+  float: left;
+}
+
+.challenger-guess {
+  float: right;
+}
