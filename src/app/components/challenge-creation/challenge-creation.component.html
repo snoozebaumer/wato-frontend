@@ -7,3 +7,5 @@
   </div>
   <button type="submit" >{{'GAME.CHALLENGE_BUTTON' | translate}}</button>
 </form>
+
+<div *ngIf="formError" class="error">{{formError | translate}}</div>

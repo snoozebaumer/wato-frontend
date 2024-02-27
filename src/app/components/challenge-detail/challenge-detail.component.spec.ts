@@ -119,6 +119,7 @@ describe('ChallengeDetailComponent', () => {
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/share', '123']);
   }));
 
+  // flaky test - didn't find out why, but mostly it works -> consistently fails with extremely wrong expected values
   it('should set range and update challenge status on setRange()', fakeAsync(() => {
     component.formError = undefined;
     const mockChallenge =<Challenge> {
@@ -135,9 +136,10 @@ describe('ChallengeDetailComponent', () => {
     const returnChallenge = <Challenge>{...mockChallenge};
     returnChallenge.challengeStatus = ChallengeStatus.GUESS_TO_BE_SET;
     mockChallengeService.setRange.and.returnValue(of(returnChallenge));
-    tick();
+
     fixture.detectChanges();
     component.setRange();
+    tick();
 
     expect(component.formError).toBeUndefined();
     expect(mockChallengeService.setRange).toHaveBeenCalledWith('123', 10, 'Heiri');

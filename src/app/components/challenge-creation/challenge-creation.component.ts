@@ -8,10 +8,16 @@ import {UserService} from '../../services/user.service';
   styleUrl: './challenge-creation.component.css'
 })
 export class ChallengeCreationComponent {
+  formError?: string;
+
   constructor(private router: Router, private challengeService: ChallengeService, public userService: UserService) {
   }
 
   create(challenge: string, challenger: string) {
+    if (!challenge || !challenger) {
+      this.formError = 'GAME.ERROR_REQUIRED_INPUTS';
+      return;
+    }
     this.challengeService.createChallenge(challenge, challenger).subscribe(async (response) => {
       await this.router.navigate(['/share', response.id]);
     });
