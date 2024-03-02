@@ -3,20 +3,25 @@
   text-align: center;
 }
 
-.username {
+.player {
   font-size: 1.1rem;
   font-weight: bold;
 }
 
+.player-name {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 .roleLabel {
-  font-size: 1vw;
   color: rgb(232, 194, 194);
 }
 
-.challengee-guess {
-  float: left;
+.guess-container {
+  display: flex;
 }
-
-.challenger-guess {
-  float: right;
+.guess {
+  flex: 1;
 }
