@@ -15,13 +15,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
       - name: Run headless test
         uses: coactions/setup-xvfb@v1
         with:
           run: npm test
-
-      - name: Run tests
-        run: npm test
 
       - name: Build
         run: npm run build
