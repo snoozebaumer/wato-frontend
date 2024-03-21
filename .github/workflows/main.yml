@@ -23,7 +23,7 @@ jobs:
 
       - name: Start xvfb
         if: runner.os == 'Linux'
-        run: sudo /usr/bin/xvfb $DISPLAY -screen 0 1280x1024x24 &
+        run: /usr/bin/xvfb $DISPLAY -screen 0 1280x1024x24 &
 
       - name: Run headless test
         run: npm test
