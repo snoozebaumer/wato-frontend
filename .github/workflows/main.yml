@@ -31,6 +31,8 @@ jobs:
       - name: Run tests
         run: |
           DISPLAY=:99 npm test
+          TEST_EXIT_CODE=$?
+          exit $TEST_EXIT_CODE
 
       - name: Stop Xvfb
         if: runner.os == 'Linux'
