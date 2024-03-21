@@ -16,31 +16,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install xvfb and dependencies
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb libxi6 libgconf-2-4
-
-      - name: Start Xvfb
-        if: runner.os == 'Linux'
-        run: |
-          export DISPLAY=:99
-          Xvfb $DISPLAY -screen 0 1920x1080x24 > /dev/null 2>&1 &
-
-      - name: Run tests
-        run: |
-          DISPLAY=:99 npm test
-          TEST_EXIT_CODE=$?
-          exit $TEST_EXIT_CODE
-
-      - name: Stop Xvfb
-        if: runner.os == 'Linux'
-        run: |
-          pkill -f "Xvfb"
+      - name: Lint
+        run: npm run lint
 
       - name: Build
-        run: npm run build
+        run: npm run build --prod
+
+      - name: Test
+        run: npm test -- --configuration=ci
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
