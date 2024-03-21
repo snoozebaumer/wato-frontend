@@ -50,7 +50,7 @@ export class ChallengeDetailComponent {
       this.formError = 'GAME.ERROR_REQUIRED_INPUTS';
       return;
     }
-    this.challengeService.setRange(this.challenge.id, this.challenge.maxRange, this.challenge.challengeeName).subscribe((response) => {
+    return this.challengeService.setRange(this.challenge.id, this.challenge.maxRange, this.challenge.challengeeName).subscribe((response) => {
       this.formError = undefined;
       this.challenge.challengeStatus = response.challengeStatus;
     });
