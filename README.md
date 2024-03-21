@@ -1,4 +1,8 @@
 # wato-frontend
+____
+> **:warning:
+Archiving in favor of a monorepo approach. See [wato](https://github.com/snoozebaumer/wato) for the new repository.**
+____
 Frontend Repo for "What are the Odds" using Angular 17.
 
 ## Setup
