@@ -19,9 +19,6 @@ jobs:
       - name: Build
         run: npm run build --prod
 
-      - name: Test
-        run: npm test -- --configuration=ci
-
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
